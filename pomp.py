@@ -30,7 +30,7 @@ st.sidebar.markdown("""
 **Costo:** 130 por semana o 400 por el mes completo (1 semana GRATIS) 
 **Certificación:** Constancia de Microsoft al finalizar  
 [Registrarse aquí](https://forms.office.com/r/Mx65d2dHP9)  
-[LinkedIn](https://linkedin.com/in/alexandereduardo)  
+[LinkedIn](https://www.linkedin.com/in/alexander-eduardo-rojas-garay-b17471235/)  
 """)
 
 # Temario del curso
