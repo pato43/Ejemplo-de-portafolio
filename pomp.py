@@ -19,8 +19,8 @@ st.set_page_config(page_title="Portafolio de Ciencia de Datos - Alexander Eduard
 # Título del Portafolio
 st.title("Ejemplo de Portafolio de Ciencia de Datos e Información de Curso")
 st.markdown("""
-### Alexander Eduardo Rojas Garay
-Bienvenido a mi portafolio de ciencia de datos. En cada pestaña, exploro un modelo de Machine Learning con un conjunto de datos de muestra, explicando su contexto, funcionalidad y aplicación.
+### Alexander Eduardo Rojas Garay (si estas en celular, toca la flecha del lado superior izquierdo)
+Bienvenido a un portafolio de ejemplo de ciencia de datos. En cada pestaña, exploro un modelo de Machine Learning con un conjunto de datos de muestra, explicando su contexto, funcionalidad y aplicación.
 """)
 
 # Información del curso
