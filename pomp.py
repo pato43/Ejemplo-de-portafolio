@@ -182,7 +182,8 @@ elif page == "Regresión Logística":
     # Curva ROC
     st.write("Curva ROC para Regresión Logística:")
     fig, ax = plt.subplots()
-    sns.lineplot([0,1], [0,1], linestyle='--', ax=ax)
+    sns.lineplot(x=[0, 1], y=[0, 1], linestyle='--', ax=ax)
+
     # Agrega aquí la lógica de ROC si deseas detallar más
     ax.set_title("Curva ROC")
     st.pyplot(fig)
