@@ -27,7 +27,7 @@ Bienvenido a un portafolio de ejemplo de ciencia de datos. En cada pestaña, exp
 st.sidebar.title("Curso Basico de Python para Ciencia de Datos")
 st.sidebar.markdown("""
 **Duración:** 3 meses  
-**Costo:** 130 por semana o 400 por el mes completo (1 semana GRATIS) 
+**Costo:** 150 por semana o 500 por el mes completo (1 semana GRATIS) 
 **Certificación:** Constancia de Microsoft al finalizar  
 [Registrarse aquí](https://forms.office.com/r/Mx65d2dHP9)  
 [LinkedIn](https://www.linkedin.com/in/alexander-eduardo-rojas-garay-b17471235/)  
