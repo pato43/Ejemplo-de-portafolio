@@ -14,10 +14,10 @@ from sklearn.datasets import load_iris
 import numpy as np
 
 # Configuración inicial de la página
-st.set_page_config(page_title="Portafolio de Ciencia de Datos - Alexander Eduardo Rojas Garay", layout="wide")
+st.set_page_config(page_title="Ejemplo de portafolio y registro", layout="wide")
 
 # Título del Portafolio
-st.title("Portafolio de Ciencia de Datos - Alexander Eduardo Rojas Garay")
+st.title("Ejemplo de Portafolio de Ciencia de Datos - Información del Curso (en la barra lateral)")
 
 # Descripción inicial
 st.markdown("""
