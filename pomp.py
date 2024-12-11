@@ -39,6 +39,13 @@ st.sidebar.markdown("""
 if st.sidebar.button("Registrarse en el Curso"):
     st.sidebar.write("[Haz clic aquí para registrarte](https://forms.office.com/r/Mx65d2dHP9)")
 
+# Agregar enlaces adicionales en la barra lateral
+st.sidebar.markdown("### Recursos Adicionales")
+st.sidebar.markdown("[Portafolio Personal](https://portafolio-personal-v1-es.streamlit.app/)")
+st.sidebar.markdown("[Proyectos en Desarrollo](https://ptpart.streamlit.app/)")
+st.sidebar.markdown("[Modelos y Actividades del Curso](https://modelosygraficos.streamlit.app/)")
+st.sidebar.markdown("[Test de Conocimientos Previos](https://evaluaciontestdeconocimientosprevios.streamlit.app/)")
+
 st.sidebar.markdown("[LinkedIn](https://www.linkedin.com/in/alexander-eduardo-rojas-garay-b17471235/)")
 
 # Temario del curso detallado
@@ -168,47 +175,56 @@ elif page == "K-Nearest Neighbors (KNN)":
 elif page == "Clustering con KMeans":
     st.header("Clustering con KMeans")
     st.write("""
-    KMeans es un algoritmo de clustering sin supervisión. Agrupa datos en "clusters" o grupos según su similitud. Es útil para segmentación y descubrimiento de patrones sin etiquetas. En este caso, usamos KMeans para identificar grupos en el dataset de Iris.
+    KMeans es un método de agrupamiento que busca particionar los datos en K grupos, donde cada dato pertenece al grupo con el centroide más cercano. Este algoritmo es útil para encontrar patrones en datos no etiquetados. En este ejemplo, aplicamos KMeans al dataset de Iris para agrupar las flores en 3 clusters.
     """)
-    kmeans = KMeans(n_clusters=3, random_state=42)
-    df['kmeans_cluster'] = kmeans.fit_predict(X)
+    kmeans_model = KMeans(n_clusters=3, random_state=42)
+    kmeans_model.fit(X)
+    df['cluster'] = kmeans_model.labels_
     
+    # Visualización de clusters
+    st.write("Visualización de Clusters:")
     fig, ax = plt.subplots()
-    sns.scatterplot(x='sepal length (cm)', y='sepal width (cm)', hue='kmeans_cluster', data=df, palette="viridis", ax=ax)
+    sns.scatterplot(x='sepal length (cm)', y='petal length (cm)', hue='cluster', data=df, palette='viridis')
+    ax.set_title("Clusters generados por KMeans")
     st.pyplot(fig)
 
 # Regresión Logística
 elif page == "Regresión Logística":
     st.header("Regresión Logística")
     st.write("""
-    La regresión logística predice probabilidades de una clase, ideal para clasificación binaria. Aquí se aplica a la clasificación de tipos de flores en el dataset de Iris, demostrando su versatilidad en problemas de múltiples clases.
+    La regresión logística es un modelo de clasificación que utiliza una función logística para predecir la probabilidad de pertenencia a una clase. En este ejemplo, se aplica para clasificar tipos de flores en el dataset de Iris.
     """)
-    log_model = LogisticRegression()
-    log_model.fit(X_train, y_train)
-    y_pred = log_model.predict(X_test)
+    logistic_model = LogisticRegression()
+    logistic_model.fit(X_train, y_train)
+    y_pred = logistic_model.predict(X_test)
     
-    # Curva ROC
-    st.write("Curva ROC para Regresión Logística:")
+    # Reporte de métricas
+    st.write("Reporte de Clasificación:")
+    st.text(classification_report(y_test, y_pred))
+    
+    # Gráfico de matriz de confusión
+    st.write("Matriz de Confusión:")
     fig, ax = plt.subplots()
-    sns.lineplot(x=[0, 1], y=[0, 1], linestyle='--', ax=ax)
+    sns.heatmap(confusion_matrix(y_test, y_pred), annot=True, cmap='coolwarm', fmt='d')
     st.pyplot(fig)
 
 # Árbol de Decisión
 elif page == "Árbol de Decisión":
     st.header("Árbol de Decisión")
     st.write("""
-    Los árboles de decisión segmentan los datos en ramas según características. Son útiles por su interpretabilidad y se aplican en clasificación y regresión. Aquí, se utiliza un árbol de decisión para clasificar el dataset de Iris.
+    Los árboles de decisión son modelos interpretables que dividen los datos en nodos basados en reglas simples. En este ejemplo, se utiliza un árbol de decisión para clasificar tipos de flores en el dataset de Iris.
     """)
-    tree_model = DecisionTreeClassifier(random_state=42)
+    tree_model = DecisionTreeClassifier()
     tree_model.fit(X_train, y_train)
     y_pred = tree_model.predict(X_test)
     
-    # Matriz de Confusión
-    st.subheader("Matriz de Confusión")
-    cm = confusion_matrix(y_test, y_pred)
+    # Gráfico de importancia de características
+    st.write("Importancia de las Características:")
+    feature_importances = pd.Series(tree_model.feature_importances_, index=X.columns)
     fig, ax = plt.subplots()
-    sns.heatmap(cm, annot=True, cmap="YlGnBu", ax=ax)
+    feature_importances.sort_values().plot(kind='barh', ax=ax, color='skyblue')
     st.pyplot(fig)
+
 
 # Footer con redes sociales
 st.markdown("---")
