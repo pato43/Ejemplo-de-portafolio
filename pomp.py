@@ -31,7 +31,7 @@ Este es un portafolio de **ejemplo** que muestra algunos de los análisis y mode
 st.sidebar.title("Curso de Python para Ciencia de Datos")
 st.sidebar.markdown("""
 **Duración:** 3 meses  
-**Costo:** 150 por semana o 500 por el mes completo (1 semana GRATIS)  
+**Costo:** 250 por semana o 800 por el mes completo   
 **Certificación:** Constancia de Microsoft al finalizar  
 """)
 
